@@ -5,9 +5,16 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  build-otrs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file otrs/Dockerfile --tag demootrs-otrs:0.0.1
+  
+  build-mariadb:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file mariadb/Dockerfile --tag demootrs-mariadb:0.0.1
