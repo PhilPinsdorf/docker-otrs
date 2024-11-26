@@ -23,7 +23,9 @@ RUN yum -y install https://harbottle.gitlab.io/epmel/7/x86_64/epmel-release.rpm 
     "perl(Text::CSV_XS)" "perl(YAML::XS)" "perl(Text::CSV_XS)" "perl(DBD::mysql)" \
     perl-Moo "perl(namespace::clean)" "perl(Crypt::Random::Source)" "perl(Exporter::Tiny)" \
     "perl(Math::Random::ISAAC)" "perl(Math::Random::Secure)" "perl(Module::Find)" \
-    "perl(Types::TypeTiny)" rsyslog supervisor tar which && \
+    "perl(Types::TypeTiny)" "perl(Crypt::JWT)" "perl(Crypt::OpenSSL::X509)" \
+    "perl(CSS::Minifier::XS)" "perl(Data::UUID)" "perl(DBD::ODBC)" "perl(DBD::Oracle)" "perl(DBD::Pg)" \
+    "perl(Hash::Merge)" "perl(iCal::Parser)" "perl(JavaScript::Minifier::XS)" "perl(Jq)" "perl(Spreadsheet::XLSX)" rsyslog supervisor tar which && \
     yum install -y https://download.znuny.org/releases/RPMS/rhel/7/znuny-${OTRS_VERSION}.noarch.rpm && \
     /opt/znuny/bin/znuny.CheckModules.pl && \
     yum clean all
