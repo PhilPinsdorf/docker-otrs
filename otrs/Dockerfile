@@ -2,7 +2,7 @@
 FROM fedora:41
 LABEL maintainer="Juan Luis Baptiste <juan@juanbaptiste.tech>"
 ENV OTRS_VERSION=7.1.3-01
-ENV OTRS_ROOT "/opt/otrs/"
+ENV OTRS_ROOT "/opt/otrs"
 ENV OTRS_BACKUP_DIR "/var/otrs/backups"
 ENV OTRS_CONFIG_DIR "${OTRS_ROOT}Kernel"
 ENV OTRS_CONFIG_MOUNT_DIR "/config/"
