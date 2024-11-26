@@ -1,5 +1,5 @@
 #OTRS ticketing system docker image.
-FROM redhat/ubi9
+FROM rockylinux:9
 LABEL maintainer="Juan Luis Baptiste <juan@juanbaptiste.tech>"
 ENV OTRS_VERSION=7.1.3-01
 ENV OTRS_ROOT "/opt/otrs/"
