@@ -1,4 +1,4 @@
-FROM mariadb:10.1
+FROM mariadb:11.7.1
 LABEL maintainer="Juan Luis Baptiste <juan.baptiste@gmail.com>"
 ENV MYSQL_ROOT_PASSWORD changeme
 
