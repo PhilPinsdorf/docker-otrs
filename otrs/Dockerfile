@@ -2,9 +2,9 @@
 FROM fedora:41
 LABEL maintainer="Juan Luis Baptiste <juan@juanbaptiste.tech>"
 ENV OTRS_VERSION=7.1.3-01
-ENV OTRS_ROOT "/opt/otrs"
+ENV OTRS_ROOT "/opt/znuny"
 ENV OTRS_BACKUP_DIR "/var/otrs/backups"
-ENV OTRS_CONFIG_DIR "${OTRS_ROOT}Kernel"
+ENV OTRS_CONFIG_DIR "${OTRS_ROOT}/Kernel"
 ENV OTRS_CONFIG_MOUNT_DIR "/config/"
 ENV OTRS_SKINS_MOUNT_DIR "/skins/"
 ENV SKINS_PATH "${OTRS_ROOT}/var/httpd/htdocs/skins/"
@@ -43,7 +43,7 @@ RUN chmod 755 /*.sh  && \
     cat /etc/supervisord.d/otrs.ini >> etc/supervisord.conf && \
     sed -i -e '/<ValidateModule>Kernel::System::SysConfig::StateValidate<\/ValidateModule>/ s/^#*/#/' \
         ${OTRS_ROOT}Kernel/Config/Files/XML/Ticket.xml  && \
-    mkdir -p ${OTRS_ROOT}var/{run,tmp}/ && \
+    mkdir -p ${OTRS_ROOT}/var/{run,tmp}/ && \
     # perl -cw ${OTRS_ROOT}bin/cgi-bin/index.pl && \
     # perl -cw ${OTRS_ROOT}bin/cgi-bin/customer.pl && \
     # perl -cw ${OTRS_ROOT}bin/otrs.Console.pl && \
@@ -57,7 +57,7 @@ RUN chmod 755 /*.sh  && \
 #host-volume is mounted. The same for the skins.
 RUN mv ${OTRS_CONFIG_DIR} / && \
     mv ${SKINS_PATH} / && \
-    touch ${OTRS_ROOT}var/tmp/firsttime && \
+    touch ${OTRS_ROOT}/var/tmp/firsttime && \
     ln -sf /dev/stdout /var/log/httpd/access_log && \
     ln -sf /dev/stderr /var/log/httpd/error_log && \
     ln -sf /dev/stdout /var/log/cron
