@@ -30,9 +30,9 @@ RUN yum install -y yum-plugin-fastestmirror && \
     /opt/otrs/bin/otrs.CheckModules.pl && \
     yum clean all
 # Add scripts and function files
-COPY *.sh /
+COPY otrs/*.sh /
 #Supervisord configuration
-COPY etc/supervisord.d/otrs.ini /etc/supervisord.d/
+COPY otrs/etc/supervisord.d/otrs.ini /etc/supervisord.d/
 RUN chmod 755 /*.sh  && \
     cp ${OTRS_ROOT}/var/httpd/htdocs/index.html /var/www/html && \
     chmod 644 /var/www/html/index.html && \
