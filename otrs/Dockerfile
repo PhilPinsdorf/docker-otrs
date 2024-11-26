@@ -49,7 +49,7 @@ RUN chmod 755 /*.sh  && \
     # perl -cw ${OTRS_ROOT}bin/otrs.Console.pl && \
     sed -i -e '/\$ModLoad imjournal/ s/^#*/#/' /etc/rsyslog.conf && \
     sed -i -e '/\$IMJournalStateFile imjournal.state/ s/^#*/#/' /etc/rsyslog.conf && \
-    sed -i 's/\(^\$OmitLocalLogging \).*/\1off/' /etc/rsyslog.conf && \
+    sed -i 's/\(^\$OmitLocalLogging \).*/\1off/' /etc/rsyslog.conf
     # rm /etc/rsyslog.d/listen.conf
 #To be able to use a host-mounted volume for OTRS configuration we need to move
 #away the contents of ${OTRS_CONFIG_DIR} to another place and move them back
