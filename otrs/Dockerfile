@@ -25,7 +25,7 @@ RUN yum -y install https://harbottle.gitlab.io/epmel/7/x86_64/epmel-release.rpm 
     "perl(Math::Random::ISAAC)" "perl(Math::Random::Secure)" "perl(Module::Find)" \
     "perl(Types::TypeTiny)" rsyslog supervisor tar which && \
     yum install -y https://download.znuny.org/releases/RPMS/rhel/7/znuny-${OTRS_VERSION}.noarch.rpm && \
-    /opt/otrs/bin/otrs.CheckModules.pl && \
+    /opt/znuny/bin/znuny.CheckModules.pl && \
     yum clean all
 # Add scripts and function files
 COPY otrs/*.sh /
