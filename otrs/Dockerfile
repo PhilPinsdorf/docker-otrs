@@ -1,7 +1,7 @@
 #OTRS ticketing system docker image.
-FROM centos:7
+FROM alpine:3.20.3
 LABEL maintainer="Juan Luis Baptiste <juan@juanbaptiste.tech>"
-ENV OTRS_VERSION=6.0.45-01
+ENV OTRS_VERSION=7.1.3-01
 ENV OTRS_ROOT "/opt/otrs/"
 ENV OTRS_BACKUP_DIR "/var/otrs/backups"
 ENV OTRS_CONFIG_DIR "${OTRS_ROOT}Kernel"
