@@ -11,8 +11,7 @@ ENV SKINS_PATH "${OTRS_ROOT}/var/httpd/htdocs/skins/"
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
-RUN yum install -y epel-release && \
-    yum -y install https://harbottle.gitlab.io/epmel/7/x86_64/epmel-release.rpm && \
+RUN yum -y install https://harbottle.gitlab.io/epmel/7/x86_64/epmel-release.rpm && \
     yum update -y && \
     yum -y install bzip2 cronie httpd mysql mod_perl \
     perl-core "perl(Crypt::SSLeay)" "perl(Net::LDAP)" "perl(URI)" \
