@@ -42,7 +42,7 @@ RUN chmod 755 /*.sh  && \
     sed -i -e "s/^nodaemon=false/nodaemon=true/" /etc/supervisord.conf && \
     cat /etc/supervisord.d/otrs.ini >> etc/supervisord.conf && \
     sed -i -e '/<ValidateModule>Kernel::System::SysConfig::StateValidate<\/ValidateModule>/ s/^#*/#/' \
-        ${OTRS_ROOT}Kernel/Config/Files/XML/Ticket.xml  && \
+        ${OTRS_ROOT}/Kernel/Config/Files/XML/Ticket.xml  && \
     mkdir -p ${OTRS_ROOT}/var/{run,tmp}/ && \
     # perl -cw ${OTRS_ROOT}bin/cgi-bin/index.pl && \
     # perl -cw ${OTRS_ROOT}bin/cgi-bin/customer.pl && \
