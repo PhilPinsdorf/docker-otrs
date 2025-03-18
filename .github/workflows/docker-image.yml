@@ -18,10 +18,10 @@ jobs:
 
     - name: Build and Push OTRS Image
       run: |
-        docker build . --file otrs/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/demootrs-otrs:0.0.1
-        docker push ghcr.io/${{ github.repository_owner }}/demootrs-otrs:0.0.1
+        docker build . --file otrs/Dockerfile --tag ghcr.io/philpinsdorf/demootrs-otrs:0.0.1
+        docker push ghcr.io/philpinsdorf/demootrs-otrs:0.0.1
 
     - name: Build and Push MariaDB Image
       run: |
-        docker build . --file mariadb/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/demootrs-mariadb:0.0.1
-        docker push ghcr.io/${{ github.repository_owner }}/demootrs-mariadb:0.0.1
+        docker build . --file mariadb/Dockerfile --tag ghcr.io/philpinsdorf/demootrs-mariadb:0.0.1
+        docker push ghcr.io/philpinsdorf/demootrs-mariadb:0.0.1
