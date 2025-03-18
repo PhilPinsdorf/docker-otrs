@@ -5,16 +5,23 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-otrs:
+  build-and-push:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write  # Required to push to GHCR
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file otrs/Dockerfile --tag demootrs-otrs:0.0.1
-  
-  build-mariadb:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file mariadb/Dockerfile --tag demootrs-mariadb:0.0.1
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Build and Push OTRS Image
+      run: |
+        docker build . --file otrs/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/demootrs-otrs:0.0.1
+        docker push ghcr.io/${{ github.repository_owner }}/demootrs-otrs:0.0.1
+
+    - name: Build and Push MariaDB Image
+      run: |
+        docker build . --file mariadb/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/demootrs-mariadb:0.0.1
+        docker push ghcr.io/${{ github.repository_owner }}/demootrs-mariadb:0.0.1
