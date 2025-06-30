@@ -1,0 +1,44 @@
+stages:
+  - build
+  - push
+
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE_TAG: "0.0.1"
+  CONTAINER_REGISTRY: git.fh-aachen.de
+  PROJECT_PATH: $CI_PROJECT_PATH
+
+# before_script:
+  # - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CONTAINER_REGISTRY
+
+build-otrs:
+  stage: build
+  script:
+    - docker build -f otrs/Dockerfile -t $CONTAINER_REGISTRY/$PROJECT_PATH/otrs:$IMAGE_TAG .
+  only:
+    - master
+
+push-otrs:
+  stage: push
+  script:
+    - docker push $CONTAINER_REGISTRY/$PROJECT_PATH/otrs:$IMAGE_TAG
+  only:
+    - master
+  dependencies:
+    - build-otrs
+
+build-mariadb:
+  stage: build
+  script:
+    - docker build -f mariadb/Dockerfile -t $CONTAINER_REGISTRY/$PROJECT_PATH/mariadb:$IMAGE_TAG .
+  only:
+    - master
+
+push-mariadb:
+  stage: push
+  script:
+    - docker push $CONTAINER_REGISTRY/$PROJECT_PATH/mariadb:$IMAGE_TAG
+  only:
+    - master
+  dependencies:
+    - build-mariadb
